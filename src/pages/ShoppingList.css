@@ -1,0 +1,25 @@
+.shopping {
+    background-color: aquamarine;
+}
+
+.shopping h1 {
+    color: darkcyan;
+    font-style: italic;
+}
+
+.shopping label {
+    padding-right: 5px;
+}
+
+.shopping input {
+    margin: 10px;
+    border-radius: 10px;
+}
+
+.shopping .list {
+    background-color: black;
+    color: aquamarine;
+    margin: 2px;
+    border: 2px solid aquamarine;
+    border-radius: 6px;
+}
