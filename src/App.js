@@ -6,17 +6,31 @@ import ShoppingList from './pages/ShoppingList';
 
 import "bootstrap/dist/css/bootstrap.min.css";
 
+
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Home from './pages/Home';
+import About from './pages/About';
+import Admin from './pages/Admin';
+
 function App() {
   return (
-    <div className="App">
-      <Navbar />
+    <BrowserRouter>
+      <div className="App">
+        <Navbar />
 
-      <Catalog/>
 
-      <ShoppingList/>
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/catalog' element={<Catalog />} />
+        <Route path='/list' element={<ShoppingList />} />
+        <Route path='/about' element={<About />} />
+        <Route path='/admin' element={<Admin />} />
+      </Routes>
 
-      <Footer />
-    </div>
+
+      <Footer/>
+      </div>
+    </BrowserRouter>
   );
 }
 

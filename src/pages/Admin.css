@@ -1,0 +1,17 @@
+
+
+
+
+.admin h1{
+    text-align: center;
+    background-color: aquamarine;
+}
+
+.admin .parent{
+    display: flex;
+    justify-content: center;
+}
+
+.admin .form h3 {
+    
+}
