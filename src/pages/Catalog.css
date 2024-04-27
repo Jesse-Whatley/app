@@ -1,3 +1,9 @@
 .catalog {
-    
+    background-color: lightgray;
+}
+
+.catalog .search {
+    width: 300;
+    display: inline-block;
+    margin-left: 30px;
 }

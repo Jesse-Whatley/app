@@ -2,17 +2,35 @@ import { useState } from 'react';
 import './Admin.css';
 
 function Admin () {
+    const [product, setProduct] = useState({
+        title: "",
+        image: "",
+        price: 0,
+        category: "",
+    });
+    const [allProducts, setAllProducts] = useState([]);
+
     const [coupon, setCoupon] = useState({
         code: "",
         discount: "",
     });
     const [allCoupons, setAllCoupons] = useState([]);
-    const [product, setProduct] = useState({
-        title: "",
-        price: "",
-        category: "",
-    });
-    const [allProducts, setAllProducts] = useState([]);
+    
+
+    function handleProduct (e){
+        let text = e.target.value;
+        let name = e.target.value;
+
+        let copy = {...product};
+        copy[name] = text;
+        setProduct(copy);
+    }
+
+    function saveProduct (){
+        let copy = [...allProducts];
+        copy.push(product);
+        setAllProducts(copy);
+    }
 
     function handleCoupon (e){
         let text = e.target.value;
@@ -40,21 +58,31 @@ function Admin () {
 
                     <div>
                         <label className='form-label'>Title:</label>
-                        <input onChange={} name='title' type="text" className='form-control' />
+                        <input onChange={handleProduct} name='title' type="text" className='form-control' />
                     </div>
 
+                    <div>
+                        <label className="form-label">Image:</label>
+                        <input onChange={handleProduct} name='image' type="number" className='form-control'/>
+                    </div>
+                    
                     <div>
                         <label className="form-label">Price:</label>
-                        <input onChange={} name='price' type="number" className='form-control'/>
-                    </div>
-                    <div>
-                        <label className="form-label">Category:</label>
-                        <input onChange={} name='category' type="text" className='form-control'/>
+                        <input onChange={handleProduct} name='price' type="number" className='form-control'/>
                     </div>
 
                     <div>
-                        <button onClick={} className='btn btn-primary'>Save Product</button>
+                        <label className="form-label">Category:</label>
+                        <input onChange={handleProduct} name='category' type="text" className='form-control'/>
                     </div>
+
+                    <div>
+                        <button onClick={saveProduct} className='btn btn-primary'>Save Product</button>
+                    </div>
+
+                    <ul className="list">
+                        {allProducts.map((prod,index) => <li key={index}>{prod.title} - ${prod.price}</li>)}
+                    </ul>
                 </div>
 
                 <div className="form">
