@@ -6,6 +6,7 @@ import ShoppingList from './pages/ShoppingList';
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.min.js";
+import "@fortawesome/fontawesome-free/css/all.min.css";
 
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
@@ -20,9 +21,8 @@ function App() {
   return (
     <GlobalProvider>
       <BrowserRouter>
-        <div className="App">
+        <div className="App page">
           <Navbar />
-
 
         <Routes>
           <Route path='/' element={<Home />} />

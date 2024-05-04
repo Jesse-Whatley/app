@@ -1,17 +1,25 @@
 import { useContext } from "react";
 import "./Navbar.css";
 
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import DataContext from "../context/DataContext";
 
 function Navbar (){
     
-    let user = useContext(DataContext).user;
-    let cart = useContext(DataContext).cart;
+    let {user, cart} = useContext(DataContext);
+
+    function getNumOfProds () {
+        let numOfProds = 0;
+        for(let i=0; i<cart.length; i++) {
+            const prod = cart[i];
+            numOfProds += prod.quantity;
+        }
+        return numOfProds;
+    }
     
     return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
-        <div className="container-fluid">
+    <div className="container-fluid">
     <Link className="navbar-brand" href="#">Navbar</Link>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span></button>
@@ -50,7 +58,7 @@ function Navbar (){
         </button>
 
         <Link className="btn btn-outline-success" to="/cart">
-            <span className="badge text-bg-light me-1">{cart.length}</span>
+            <span className="badge text-bg-light me-1">{getNumOfProds()}</span>
             Cart
         </Link>
     </form>

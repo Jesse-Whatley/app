@@ -17,3 +17,24 @@
 .cart .cart-prod .info {
     flex: 3;
 }
+
+.cart .parent {
+    display: flex;
+}
+
+.cart .parent .prods{
+    flex: 3;
+}
+
+.cart .parent .side-menu{
+    flex: 1;
+    background-color: darkgrey;
+    border: 1px solid black;
+    border-radius: 10px;
+    margin: 10px 15px;
+    padding: 8px;
+}
+
+.cart .btn-pay {
+    margin-top: 25px;
+}

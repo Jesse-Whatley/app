@@ -49,7 +49,7 @@ function Admin () {
 
 
     return(
-        <div className="admin">
+        <div className="admin page">
             <h1>Admin</h1>
 
             <div className="parent">

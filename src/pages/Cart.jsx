@@ -3,26 +3,57 @@ import "./Cart.css";
 import DataContext from "../context/DataContext";
 
 function Cart (){
-    const cart = useContext(DataContext).cart;
+    const {cart, clearCart} = useContext(DataContext);
+
+
+    function getNumOfProds () {
+        let num = 0 
+        for(let i=0; i<cart.length; i++) {
+            num += cart[i].quantity;
+        }
+        return num;
+    }
+
+    function getTotal () {
+        let total = 0
+        for(let i=0; i<cart.length; i++){
+            let prod = cart[i]
+            total += (prod.price * prod.quantity);
+        }
+        return total;
+    }
+
+    function clearAll (){
+        clearCart();
+    }
 
     return (
-        <div className="cart">
+        <div className="cart page">
             <h1>Welcome To The Cart</h1>
+            <h4>You have {getNumOfProds()} products in the cart</h4>
 
-        {cart.map(prod => <div className="cart-prod" key={prod._id}>
-            <img src= {"/images/" + prod.image} alt="" />
-            <div className="info">
-                <h4>{prod.title}</h4>
-                <p>{prod.category}</p>
+        <div className="parent">
+            <div className="prods">
+                {cart.map(prod => <div className="cart-prod" key={prod._id}>
+                    <img src= {"/images/" + prod.image} alt="" />
+                    <div className="info">
+                        <h4>{prod.title}</h4>
+                        <p>{prod.category}</p>
+                    </div>
+
+                    <label>${prod.price}</label>
+                    <label>{prod.quantity}</label>
+                    <label>${prod.price * prod.quantity}</label>
+                    
+                    </div>)}
             </div>
 
-            <label>{prod.price}</label>
-            <label>{prod.quantity}</label>
-            <label>{prod.price * prod.quantity}</label>
-            
-            {prod.price}
-            
-            </div>)}
+            <div className="side-menu">
+                <h4>Your total is: ${getTotal()}</h4>
+                <button className="btn-pay btn btn-sm btn-success">Pay Now</button>
+                <button className="btn-clear btn btn-link" onClick={clearAll}>Clear All</button>
+            </div>
+        </div>
         </div>
     );
 }

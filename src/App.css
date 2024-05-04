@@ -1,5 +1,15 @@
 .App {
   text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+html, body, #root, .App{
+  height: 100%;
+}
+
+.page {
+  flex: 1 1;
 }
 
 .App-logo {

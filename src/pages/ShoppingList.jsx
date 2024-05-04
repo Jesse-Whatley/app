@@ -25,7 +25,7 @@ function ShoppingList (){
     }
 
     return (
-        <div className="shopping">
+        <div className="shopping page">
             <h1>This Is Your Shopping List</h1>
             
             <div className="form">
