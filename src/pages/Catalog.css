@@ -1,5 +1,10 @@
 .catalog {
-    background-color: lightgray;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background-color: black;
+}
+
+.catalog h2 {
+    color: aquamarine;
 }
 
 .catalog .search {
@@ -7,4 +12,3 @@
     display: inline-block;
     margin-left: 30px;
 }
-

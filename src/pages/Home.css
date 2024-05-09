@@ -1,5 +1,10 @@
 .home {
-    background-color: aquamarine;
+    background-color: black;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.home h1 {
+    color: aquamarine;
 }
 
 .home img{
