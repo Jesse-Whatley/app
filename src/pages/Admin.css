@@ -1,10 +1,12 @@
-
+.admin {
+    background-color: black;
+    color: aquamarine;
+}
 
 
 
 .admin h1{
     text-align: center;
-    background-color: aquamarine;
 }
 
 .admin .parent{
