@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 const products = [
     {
         title: "Rotary Machine",
@@ -79,21 +81,27 @@ const products = [
 ]
 
 class DataService {
+    serverURL = "http://127.0.0.1:5000/api"
 
-    getProducts (){
+    async getProducts (){
         // todo: retieve prods from server
-        return products;
+        let response = await axios.get(this.serverURL + "/products");
+        return response.data; 
+
+        //return products;
     }
     
-    getCategories (){
-        return ['tattoo gun', 'tubes', 'needles', 'ink', 'printer', 'accessories']
+    async getCategories (){
+        let response = await axios.get(this.serverURL + "/categories");
+        return response.data;
+
+        //return ['tattoo gun', 'tubes', 'needles', 'ink', 'printer', 'accessories']
     }
 
-    saveProduct (){
-
+    async saveProduct (product){
+        let response = await axios.post(this.serverURL + "/products", product);
+        return response.data;
     }
-
-
 }
 
 export default new DataService();

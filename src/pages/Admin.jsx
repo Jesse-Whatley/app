@@ -1,7 +1,14 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import DataService from '../services/DataService';
 import './Admin.css';
 
 function Admin () {
+    const [coupon, setCoupon] = useState({
+        code: "",
+        discount: "",
+    });
+    const [allCoupons, setAllCoupons] = useState([]);
+    
     const [product, setProduct] = useState({
         title: "",
         image: "",
@@ -10,16 +17,18 @@ function Admin () {
     });
     const [allProducts, setAllProducts] = useState([]);
 
-    const [coupon, setCoupon] = useState({
-        code: "",
-        discount: "",
-    });
-    const [allCoupons, setAllCoupons] = useState([]);
-    
+    async function loadCatalog() {
+        let prods = await DataService.getProducts();
+        setAllProducts(prods);
+    }
+
+    useEffect(function (){
+        loadCatalog();
+    }, []);
 
     function handleProduct (e){
         let text = e.target.value;
-        let name = e.target.value;
+        let name = e.target.name;
 
         let copy = {...product};
         copy[name] = text;
@@ -27,9 +36,15 @@ function Admin () {
     }
 
     function saveProduct (){
+        // fix the price
+        let fixedProduct = {...product};
+        fixedProduct.price = parseFloat (fixedProduct.price);
+
         let copy = [...allProducts];
-        copy.push(product);
+        copy.push(fixedProduct);
         setAllProducts(copy);
+
+        DataService.saveProduct(fixedProduct);
     }
 
     function handleCoupon (e){
@@ -63,7 +78,7 @@ function Admin () {
 
                     <div>
                         <label className="form-label">Image:</label>
-                        <input onChange={handleProduct} name='image' type="number" className='form-control'/>
+                        <input onChange={handleProduct} name='image' type="text" className='form-control'/>
                     </div>
                     
                     <div>
